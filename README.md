@@ -23,6 +23,7 @@ Job Finder is a monorepo project built with modern web technologies that automat
 ## Tech Stack
 
 ### Frontend
+
 - **Next.js 15**: React framework with App Router
 - **TypeScript**: Type-safe development
 - **Tailwind CSS**: Utility-first styling
@@ -32,6 +33,7 @@ Job Finder is a monorepo project built with modern web technologies that automat
 - **Jest**: Unit testing
 
 ### Backend
+
 - **AWS Lambda**: Serverless API functions
 - **API Gateway**: RESTful API endpoints
 - **Serverless Framework**: Infrastructure as Code
@@ -39,10 +41,12 @@ Job Finder is a monorepo project built with modern web technologies that automat
 - **Node.js**: Runtime environment (v22.0.4)
 
 ### Worker
+
 - **Playwright**: Web scraping with stealth capabilities
 - **Node.js**: Scheduled scraping tasks
 
 ### Infrastructure
+
 - **Turborepo**: Monorepo build system
 - **pnpm**: Package manager with workspace support
 - **Volta**: Node.js version management
@@ -50,6 +54,7 @@ Job Finder is a monorepo project built with modern web technologies that automat
 - **MSW (Mock Service Worker)**: API mocking for testing
 
 ### Integrations
+
 - **Slack API**: Job notifications
 - **Google Sheets API**: Data export and synchronization
 
@@ -235,12 +240,14 @@ pnpm install
 Create `.env` files for each app based on the `.env.example` templates:
 
 **Frontend** (`apps/frontend/.env.local`):
+
 ```env
 NEXT_PUBLIC_API_URL=your-api-url
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-google-maps-key
 ```
 
 **Backend** (`apps/backend/.env`):
+
 ```env
 AWS_REGION=us-east-1
 DYNAMODB_TABLE_NAME=job-listings
@@ -248,6 +255,7 @@ SLACK_WEBHOOK_URL=your-slack-webhook
 ```
 
 **Worker** (`apps/worker/.env`):
+
 ```env
 AWS_REGION=us-east-1
 DYNAMODB_TABLE_NAME=job-listings
@@ -285,6 +293,7 @@ pnpm --filter frontend storybook
 ## Available Scripts
 
 ### Root Level
+
 - `pnpm dev` - Start all development servers
 - `pnpm build` - Build all packages and apps
 - `pnpm test` - Run all tests
@@ -294,16 +303,19 @@ pnpm --filter frontend storybook
 - `pnpm typecheck` - Type check all TypeScript code
 
 ### Frontend Specific
+
 - `pnpm --filter frontend test:e2e` - Run Playwright E2E tests
 - `pnpm --filter frontend test:unit` - Run Jest unit tests
 - `pnpm --filter frontend storybook` - Start Storybook server
 - `pnpm --filter frontend build-storybook` - Build static Storybook
 
 ### Backend Specific
+
 - `pnpm --filter backend deploy` - Deploy backend to AWS
 - `pnpm --filter backend logs` - View Lambda logs
 
 ### Worker Specific
+
 - `pnpm --filter worker start` - Run scraping task once
 - `pnpm --filter worker schedule` - Set up scheduled scraping
 
@@ -472,6 +484,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For questions or issues, please:
+
 - Open an issue on GitHub
 - Check the documentation in the `docs/` directory
 - Contact the maintainers

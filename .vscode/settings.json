@@ -1,7 +1,87 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ]
+  // ファイル保存時に自動でフォーマット（整形）を実行
+  "editor.formatOnSave": true,
+
+  // デフォルトのフォーマッターとしてPrettierを使用
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ファイル保存時に実行するコードアクション
+  "editor.codeActionsOnSave": {
+    // ESLintで自動修正可能なエラーを保存時に修正
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Prettierの設定ファイル(.prettierrc等)が存在する場合のみ実行 -> これにより、設定がないプロジェクトで勝手にフォーマットされるのを防ぐ
+  "prettier.requireConfig": true,
+
+  // モノレポ構成の場合、ESLintの作業ディレクトリを指定-> 各apps/*とpackages/*のディレクトリで個別にESLintを実行
+  "eslint.workingDirectories": [{ "pattern": "apps/*" }, { "pattern": "packages/*" }],
+
+  // プロジェクト内のTypeScriptを使用（グローバルではなく）
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // プロジェクト内のTypeScriptを使うかどうか確認プロンプトを表示
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // TypeScript用
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TypeScript React (TSX)用
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JavaScript用
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JavaScript React (JSX)用
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JSON用
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JSONC (コメント付きJSON、tsconfig.json等)用
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // HTML用
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // CSS用
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // SCSS用
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Less用
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Markdown用
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Markdownでは行末の空白が意味を持つ場合があるため
+    "files.trimTrailingWhitespace": false
+  },
+
+  // YAML用
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -1,3 +1,7 @@
+# https://turborepo.com/docs/crafting-your-repository/structuring-a-repository#declaring-directories-for-packages
+# `turbo run`コマンドで実行されるパッケージを指定している
+# apps配下のすべてのパッケージとpackages配下のすべてのパッケージを対象としている
+
 packages:
   - "apps/*"
   - "packages/*"
