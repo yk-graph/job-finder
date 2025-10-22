@@ -63,134 +63,36 @@ Job Finder is a monorepo project built with modern web technologies that automat
 ```
 project-root/
 ├── apps/                           # Application modules
-│   ├── frontend/                   # Next.js 15 web application
+│   ├── front/                     # Next.js 15 web application
 │   │   ├── src/
-│   │   │   ├── app/               # App Router pages & layouts
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── layout.tsx
-│   │   │   │   └── jobs/          # Job listing pages
-│   │   │   ├── components/
-│   │   │   │   ├── JobCard.tsx
-│   │   │   │   ├── MapView.tsx
-│   │   │   │   └── FilterPanel.tsx
-│   │   │   ├── lib/
-│   │   │   │   ├── api-client.ts  # API client utilities
-│   │   │   │   └── google-maps.ts # Google Maps integration
-│   │   │   ├── hooks/             # Custom React hooks
-│   │   │   ├── styles/            # Global styles
-│   │   │   └── types/             # Frontend-specific types
-│   │   ├── tests/
-│   │   │   ├── e2e/               # Playwright E2E tests
-│   │   │   └── unit/              # Jest unit tests
-│   │   ├── .storybook/            # Storybook configuration
-│   │   └── stories/               # Component stories
+│   │   │   └── app/               # App Router pages & layouts
+│   │   │       ├── page.tsx       # Home page
+│   │   │       ├── layout.tsx     # Root layout
+│   │   │       ├── favicon.ico    # Site favicon
+│   │   │       └── globals.css    # Global styles
+│   │   ├── public/                # Static assets
+│   │   │   ├── file.svg
+│   │   │   ├── globe.svg
+│   │   │   ├── next.svg
+│   │   │   ├── vercel.svg
+│   │   │   └── window.svg
+│   │   ├── eslint.config.mjs      # ESLint configuration
+│   │   ├── next-env.d.ts          # Next.js type definitions
+│   │   ├── next.config.ts         # Next.js configuration
+│   │   ├── package.json           # Frontend dependencies
+│   │   ├── postcss.config.mjs     # PostCSS configuration
+│   │   ├── tsconfig.json          # TypeScript configuration
+│   │   └── README.md              # Frontend-specific docs
 │   │
-│   ├── backend/                    # AWS Lambda API
-│   │   ├── src/
-│   │   │   ├── handlers/          # Lambda function handlers
-│   │   │   │   ├── jobs/
-│   │   │   │   │   ├── search.ts  # Job search endpoint
-│   │   │   │   │   ├── filter.ts  # Filtering endpoint
-│   │   │   │   │   └── detail.ts  # Job detail endpoint
-│   │   │   │   └── health.ts      # Health check endpoint
-│   │   │   ├── services/          # Business logic layer
-│   │   │   │   ├── indeed-scraper.ts
-│   │   │   │   └── job-cache.ts
-│   │   │   ├── repositories/      # Data access layer
-│   │   │   │   └── jobs.repository.ts
-│   │   │   ├── middleware/
-│   │   │   │   ├── error-handler.ts
-│   │   │   │   └── cors.ts
-│   │   │   ├── utils/
-│   │   │   └── types/
-│   │   └── serverless.yml         # Serverless Framework config
-│   │
-│   └── worker/                     # Scraping worker
-│       ├── src/
-│       │   ├── index.ts           # Main entry point
-│       │   ├── scrapers/          # Scraping logic
-│       │   │   ├── indeed-scraper.ts
-│       │   │   └── job-parser.ts
-│       │   ├── tasks/             # Scheduled tasks
-│       │   │   └── sync-jobs.ts
-│       │   └── utils/
-│       │       ├── logger.ts
-│       │       └── retry.ts
-│       └── .env.example
+│   └── worker/                     # Scraping worker (to be implemented)
 │
-├── packages/                       # Shared packages
-│   ├── shared/                    # Common code & type definitions
-│   │   ├── src/
-│   │   │   ├── types/            # Shared TypeScript types
-│   │   │   │   ├── job.ts
-│   │   │   │   ├── user.ts
-│   │   │   │   └── api.ts
-│   │   │   ├── constants/
-│   │   │   │   ├── job-types.ts
-│   │   │   │   └── locations.ts
-│   │   │   └── utils/            # Utility functions
-│   │   │       ├── date.ts
-│   │   │       └── validators.ts
-│   │   └── package.json
-│   │
-│   ├── aws-clients/               # AWS SDK wrappers
-│   │   ├── src/
-│   │   │   ├── dynamodb.ts       # DynamoDB client
-│   │   │   ├── s3.ts             # S3 client (future use)
-│   │   │   └── index.ts
-│   │   └── package.json
-│   │
-│   └── external-apis/             # Third-party API integrations
-│       ├── src/
-│       │   ├── slack.ts          # Slack notifications
-│       │   ├── spreadsheet.ts    # Google Sheets integration
-│       │   └── index.ts
-│       └── package.json
+├── packages/                       # Shared packages (to be created)
 │
-├── infrastructure/                # Infrastructure documentation
-│   ├── README.md                 # Infrastructure overview
-│   ├── aws/
-│   │   ├── dynamodb/
-│   │   │   └── setup.md         # DynamoDB table setup guide
-│   │   ├── lambda/
-│   │   │   └── configuration.md  # Lambda configuration guide
-│   │   └── api-gateway/
-│   │       └── setup.md         # API Gateway setup guide
-│   └── github-actions/
-│       └── setup.md              # GitHub Actions setup guide
-│
-├── docs/                          # Project documentation
-│   ├── setup.md                  # Setup instructions
-│   ├── architecture.md           # Architecture diagrams & explanations
-│   ├── api-specification.md      # API specifications
-│   └── deployment.md             # Deployment procedures
-│
-├── mocks/                         # MSW mock definitions
-│   ├── handlers/
-│   │   ├── jobs.ts
-│   │   └── users.ts
-│   └── server.ts
-│
-├── .vscode/                       # VS Code settings (team-shared)
-│   └── settings.json             # Auto-format on save
-│
-├── .cursor/                       # Cursor settings (team-shared)
-│   └── settings.json             # Auto-format on save
-│
-├── .github/
-│   └── workflows/
-│       ├── ci.yml                # CI pipeline
-│       └── deploy.yml            # Deployment pipeline
-│
-├── package.json                   # Root package with Volta config
+├── package.json                   # Root package with workspace config
 ├── pnpm-workspace.yaml           # pnpm workspace configuration
+├── pnpm-lock.yaml                # Dependency lock file
 ├── turbo.json                     # Turborepo configuration
-├── .gitignore
-├── .npmrc
-├── .editorconfig                  # Editor common settings
-├── .prettierrc.json              # Prettier configuration
-├── .eslintrc.json                # ESLint configuration
-└── README.md
+└── README.md                      # This file
 ```
 
 ## Prerequisites
@@ -239,7 +141,7 @@ pnpm install
 
 Create `.env` files for each app based on the `.env.example` templates:
 
-**Frontend** (`apps/frontend/.env.local`):
+**Frontend** (`apps/front/.env.local`):
 
 ```env
 NEXT_PUBLIC_API_URL=your-api-url
@@ -278,17 +180,15 @@ Follow the guides in the `infrastructure/` directory to set up AWS resources:
 pnpm dev
 
 # Run specific app
-pnpm --filter frontend dev
-pnpm --filter backend dev
+pnpm --filter front dev
 pnpm --filter worker dev
 ```
 
-### 7. Run Storybook (Optional)
+### 7. Start Development
 
-```bash
-# Start Storybook for component development
-pnpm --filter frontend storybook
-```
+Frontend application will be available at:
+- **Local development**: http://localhost:3000
+- **Next.js features**: App Router, Server Components, TypeScript
 
 ## Available Scripts
 
@@ -304,17 +204,12 @@ pnpm --filter frontend storybook
 
 ### Frontend Specific
 
-- `pnpm --filter frontend test:e2e` - Run Playwright E2E tests
-- `pnpm --filter frontend test:unit` - Run Jest unit tests
-- `pnpm --filter frontend storybook` - Start Storybook server
-- `pnpm --filter frontend build-storybook` - Build static Storybook
+- `pnpm --filter front dev` - Start development server
+- `pnpm --filter front build` - Build production version
+- `pnpm --filter front start` - Start production server
+- `pnpm --filter front lint` - Lint frontend code
 
-### Backend Specific
-
-- `pnpm --filter backend deploy` - Deploy backend to AWS
-- `pnpm --filter backend logs` - View Lambda logs
-
-### Worker Specific
+### Worker Specific (to be implemented)
 
 - `pnpm --filter worker start` - Run scraping task once
 - `pnpm --filter worker schedule` - Set up scheduled scraping
@@ -348,35 +243,28 @@ pnpm --filter frontend test:e2e
 pnpm --filter frontend test:unit
 ```
 
-### Component Development
+### Current Development Status
 
-Use Storybook for isolated component development:
-
-```bash
-pnpm --filter frontend storybook
-```
-
-### API Mocking
-
-The project uses MSW (Mock Service Worker) for API mocking during development and testing. Mock handlers are defined in the `mocks/` directory and shared across all apps.
+This is a newly initialized project with:
+- ✅ Next.js 15 with App Router setup
+- ✅ TypeScript configuration
+- ✅ Turborepo monorepo structure
+- ⏳ Job scraping functionality (to be implemented)
+- ⏳ Backend API (to be implemented)
+- ⏳ Database integration (to be implemented)
 
 ## Deployment
 
 ### Frontend (Vercel)
 
 ```bash
-cd apps/frontend
+cd apps/front
 vercel
 ```
 
-### Backend (AWS Lambda)
+### Backend (to be implemented)
 
-```bash
-cd apps/backend
-pnpm deploy
-```
-
-Follow the deployment guide in `docs/deployment.md` for detailed instructions.
+Backend deployment will be configured when the API layer is implemented.
 
 ## Architecture
 
