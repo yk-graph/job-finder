@@ -2,9 +2,6 @@
   "name": "@job-finder/front",
   "version": "1.0.0",
   "private": true,
-  "volta": {
-    "node": "22.20.0"
-  },
   "engines": {
     "node": ">=22.0.0"
   },

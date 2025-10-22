@@ -26,7 +26,18 @@ coverage
 out/
 build
 dist
+*.tsbuildinfo
 
+# Logs
+logs/
+*.log
+
+# Playwright
+.playwright/
+
+# Temporary files
+tmp/
+temp/
 
 # Debug
 npm-debug.log*
